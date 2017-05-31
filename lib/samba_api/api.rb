@@ -1,4 +1,4 @@
-
+require 'open3'
 class Api
   include HTTParty
   BASE_API_URL = 'http://api.sambavideos.sambatech.com/v1'
@@ -19,13 +19,26 @@ class Api
     response = JSON.parse(response.body)
   end
 
-  def upload_media_url
+  def media_upload_data
     body = '{ "qualifier": "VIDEO" }'
+    #TODO better way to get project
     project_id = get_projects.first["id"]
     url = Api::BASE_API_URL+"/medias?access_token=#{@options["access_token"]}&pid=#{project_id}"
     response = self.class.post(url, headers: @options, body: body)
     response = JSON.parse(response.body)
-    response["uploadUrl"]
+  end
+
+  def upload_media(video_path)
+    upload_url = media_upload_data["uploadUrl"]
+    stdin, stdout, stderr, wait_thr = *Open3.popen3(
+      'curl', '--silent', '--show-error',
+       '-X', 'POST', upload_url,
+       '--header', 'Content-Type: multipart/form-data',
+       '-F', "file=@#{video_path}"
+    )
+    wait_thr.join
+    return false unless stderr.eof?
+      return stdout.read
   end
 
 
