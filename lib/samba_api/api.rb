@@ -8,13 +8,24 @@ class Api
   end
 
   def get_projects
-    endpoint_projects = Api::BASE_API_URL + "/projects?access_token=#{@options["access_token"]}"
-    response = HTTParty.get(endpoint_projects)
+    endpoint_projects = Api::BASE_API_URL+"/projects?access_token=#{@options["access_token"]}"
+    response = self.class.get(endpoint_projects)
     response = JSON.parse(response.body)
   end
 
-  def get_project_id(project_id)
-    endpoint_project = Api::BASE_API_URL + "/projects?access_token=#{@options["access_token"]}"
+  def get_project(project_id)
+    endpoint_project = Api::BASE_API_URL+"/projects/#{project_id}?access_token=#{@options["access_token"]}"
+    response = self.class.get(endpoint_project)
+    response = JSON.parse(response.body)
+  end
+
+  def upload_media_url
+    body = '{ "qualifier": "VIDEO" }'
+    project_id = get_projects.first["id"]
+    url = Api::BASE_API_URL+"/medias?access_token=#{@options["access_token"]}&pid=#{project_id}"
+    response = self.class.post(url, headers: @options, body: body)
+    response = JSON.parse(response.body)
+    response["uploadUrl"]
   end
 
 
