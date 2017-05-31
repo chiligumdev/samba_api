@@ -1,5 +1,6 @@
 require "samba_api/version"
+require "samba_api/base"
 
 module SambaApi
-  # Your code goes here...
+
 end
