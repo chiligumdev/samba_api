@@ -1,7 +1,9 @@
 require 'open3'
+
+# samba_class
 class Samba
   include HTTParty
-  BASE_API_URL = 'https://api.sambavideos.sambatech.com/v1'
+  BASE_API_URL = 'https://api.sambavideos.sambatech.com/v1'.freeze
 
   def initialize(attributes)
     @options = { 'access_token' =>  attributes[:access_token], 'Content-Type' => 'application/json'  }
