@@ -5,5 +5,4 @@ require "samba_api/version"
 require "samba_api/samba"
 
 module SambaApi
-
 end
