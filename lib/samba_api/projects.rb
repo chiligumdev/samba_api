@@ -6,13 +6,26 @@ module SambaApi
     include HTTParty
 
     def initialize(attributes = {})
-      @options = { 'access_token' =>  attributes[:access_token], 'Content-Type' => 'application/json' }
+      @options = { 'access_token' =>  attributes[:access_token],
+                   'Content-Type' => 'application/json' }
     end
 
-    def get_projects
+    def all_projects
       prepare_endpoint
       response = self.class.get(prepare_endpoint)
       JSON.parse(response.body)
+    end
+
+    def project(project_id)
+      # SOMETHING IN THE WAY, UHHHMMMM HUMMMMM YEAH
+    end
+
+    def create_project
+      # SOMETHING IN THE WAY, UHHHMMMM HUMMMMM YEAH
+    end
+
+    def delete_project(project_id)
+      # SOMETHING IN THE WAY, UHHHMMMM HUMMMMM YEAH
     end
 
     private
