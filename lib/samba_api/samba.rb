@@ -50,4 +50,17 @@ class Samba
     response = JSON.parse(response.body)
   end
 
+  def get_all_categries
+    project_id = get_projects.first["id"]
+    url = Samba::BASE_API_URL+"/categories?access_token=#{@options["access_token"]}&pid=#{project_id}"
+    response = self.class.get(url, headers: @options )
+  end
+
+  def get_category_chiligum
+    project_id = get_projects.first["id"]
+    url = Samba::BASE_API_URL+"/categories/33?&access_token=#{@options["access_token"]}&pid=#{project_id}"
+    response = self.class.get(url, headers: @options)
+    response = JSON.parse(response.body)
+  end
+
 end
