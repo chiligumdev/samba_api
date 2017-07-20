@@ -9,12 +9,6 @@ class Samba
     @options = { 'access_token' =>  attributes[:access_token], 'Content-Type' => 'application/json'  }
   end
 
-  def get_projects
-    endpoint_projects = Samba::BASE_API_URL+"/projects?access_token=#{@options["access_token"]}"
-    response = self.class.get(endpoint_projects)
-    response = JSON.parse(response.body)
-  end
-
   def get_project(project_id)
     endpoint_project = Samba::BASE_API_URL+"/projects/#{project_id}?access_token=#{@options["access_token"]}"
     response = self.class.get(endpoint_project)
