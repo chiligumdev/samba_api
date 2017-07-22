@@ -2,6 +2,7 @@ require 'samba_api'
 # lib/samba/projects.rb
 
 module SambaApi
+  # projects class
   class Projects
     include HTTParty
 
@@ -11,13 +12,15 @@ module SambaApi
     end
 
     def all_projects
-      prepare_endpoint
-      response = self.class.get(prepare_endpoint)
+      endpoint_url = base_url + namespace + access_token
+      response = self.class.get(endpoint_url)
       JSON.parse(response.body)
     end
 
     def project(project_id)
-      # SOMETHING IN THE WAY, UHHHMMMM HUMMMMM YEAH
+      endpoint_url = base_url + namespace + '/' + project_id.to_s + access_token
+      response = self.class.get(endpoint_url)
+      JSON.parse(response.body)
     end
 
     def create_project
@@ -30,11 +33,16 @@ module SambaApi
 
     private
 
-    def prepare_endpoint
-      endpoint = SambaApi::BASE_URL
-      namespace = SambaApi.demodulize_class(self.class)
-      access_token = "?access_token=#{@options['access_token']}"
-      return endpoint + namespace + access_token
+    def namespace
+      SambaApi.demodulize_class(self.class)
+    end
+
+    def base_url
+      SambaApi::BASE_URL
+    end
+
+    def access_token
+      "?access_token=#{@options['access_token']}"
     end
   end
 end
