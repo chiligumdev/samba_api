@@ -1,15 +1,11 @@
 require 'samba_api'
+require 'samba_api/client'
 # lib/samba/projects.rb
 
 module SambaApi
   # projects class
-  class Projects
+  class Projects < SambaApi::Client
     include HTTParty
-
-    def initialize(attributes = {})
-      @options = { 'access_token' =>  attributes[:access_token],
-                   'Content-Type' => 'application/json' }
-    end
 
     def all_projects
       endpoint_url = base_url + namespace + access_token
@@ -47,7 +43,7 @@ module SambaApi
     end
 
     def access_token
-      "?access_token=#{@options['access_token']}"
+      "?access_token=#{@access_token}"
     end
 
     def header_json
