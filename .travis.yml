@@ -1,5 +1,3 @@
 language: ruby
-rvm:
- - 2.3.3
- - ruby
- - rbx-2S
+sudo: false
+dist: trusty
