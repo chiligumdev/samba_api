@@ -20,9 +20,9 @@ module SambaApi
     end
 
     def create_project(name, desc)
-      values = { name: name.to_s, description: desc.to_s }.to_json
+      values = { "name": name.to_s, "description": desc.to_s }.to_json
       endpoint_url = base_url + namespace + access_token
-      response = self.class.post(endpoint_url, values, header_json)
+      response = HTTParty.post(endpoint_url, body: values, headers: headers)
       response.code
     end
 
@@ -47,7 +47,7 @@ module SambaApi
     end
 
     def header_json
-      'application/json'
+      {"Content-Type" => "application/json"}
     end
   end
 end
