@@ -23,7 +23,7 @@ module SambaApi
       values = { "name": name.to_s, "description": desc.to_s }.to_json
       endpoint_url = base_url + namespace + access_token
       response = HTTParty.post(endpoint_url, body: values, headers: header_request)
-      response.code
+      JSON.parse response, symbolize_names: true
     end
 
     def delete_project(project_id)
