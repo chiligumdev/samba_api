@@ -12,4 +12,4 @@ notifications:
     recipients:
       - lndr.figueredo@gmail.com
     on_failure: change
-    on_success: never
+    on_success: change
