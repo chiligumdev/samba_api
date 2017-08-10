@@ -1,8 +1,15 @@
 language: ruby
-sudo: false
+cache: bundler
 
 rvm:
-  - 2.3.3
-  - ruby-head
+  - jruby
+  - ruby 2.4.0p0
 
-dist: precise
+script: 'bundle exec rake'
+
+notifications:
+  email:
+    recipients:
+      - lndr.figueredo@gmail.com
+    on_failure: change
+    on_success: never
