@@ -7,10 +7,6 @@ module SambaApi
   class Projects < SambaApi::Client
     include HTTParty
 
-    def self.greet
-      "hello world"
-    end
-
     def all_projects
       endpoint_url = base_url + namespace + access_token
       response = self.class.get(endpoint_url)
