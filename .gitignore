@@ -9,3 +9,5 @@
 /tmp/
 /.byebug_history
 */.gem
+# Ignore application configuration
+/config/application.yml
