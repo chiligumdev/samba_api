@@ -1,6 +1,7 @@
 require 'samba_api'
-# lib/samba/categories.rb
+require 'samba_api/client'
 
+# lib/samba/categories.rb
 module SambaApi
   # category class
   class Category
