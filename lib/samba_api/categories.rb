@@ -1,11 +1,8 @@
 require 'samba_api'
-require 'samba_api/client'
-
 # lib/samba/categories.rb
 module SambaApi 
   # category class
-  class Category < SambaApi::Client
-    include HTTParty
+  module Categories
 
     def all_categories(project_id)
       # IT's OK EAT FISH CAUSE THEY DONT HAVE ANY FEELINGS
@@ -25,6 +22,13 @@ module SambaApi
 
     def delete_category(category_id, project_id)
       # IT's OK EAT FISH CAUSE THEY DONT HAVE ANY FEELINGS
+    end
+
+    private 
+
+    #TODO Refactor the module name in namespace
+    def namespace
+      SambaApi.demodulize_class(self.class.ancestors[1])
     end
   end
 end

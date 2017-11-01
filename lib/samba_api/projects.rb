@@ -1,6 +1,6 @@
 require 'samba_api'
+require 'samba_api/init'
 # lib/samba/projects.rb
-
 module SambaApi
   # projects class
   module Projects
@@ -27,25 +27,6 @@ module SambaApi
       endpoint_url = base_url + namespace + '/' + project_id.to_s + access_token
       response = self.class.delete(endpoint_url, header_request)
       response.code
-    end
-
-    private
-
-    #TODO Refactor the module name in namespace
-    def namespace
-      SambaApi.demodulize_class(self.class.ancestors[1])
-    end
-
-    def base_url
-      SambaApi::BASE_URL
-    end
-
-    def access_token
-      "?access_token=#{@access_token}"
-    end
-
-    def header_request
-      {"Content-Type" => "application/json"}
     end
   end
 end
