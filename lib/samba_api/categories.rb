@@ -2,9 +2,9 @@ require 'samba_api'
 require 'samba_api/client'
 
 # lib/samba/categories.rb
-module SambaApi
+module SambaApi 
   # category class
-  class Category
+  class Category < SambaApi::Client
     include HTTParty
 
     def all_categories(project_id)

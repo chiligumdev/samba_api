@@ -1,4 +1,5 @@
 require 'samba_api'
+
 # samba_api/lib/samba_api/client.rb
 module SambaApi
   # initialize class client

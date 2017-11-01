@@ -2,10 +2,8 @@ require 'httparty'
 require 'json'
 require 'byebug'
 require 'samba_api/version'
-require 'samba_api/samba'
-require 'samba_api/client'
+require 'samba_api/init'
 require 'samba_api/projects'
-require 'samba_api/categories'
 
 # lib/samba_api.rb
 module SambaApi

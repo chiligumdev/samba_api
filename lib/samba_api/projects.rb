@@ -1,12 +1,9 @@
 require 'samba_api'
-require 'samba_api/client'
 # lib/samba/projects.rb
 
 module SambaApi
   # projects class
-  class Projects < SambaApi::Client
-    include HTTParty
-
+  module Projects
     def all_projects
       endpoint_url = base_url + namespace + access_token
       response = self.class.get(endpoint_url)
@@ -35,7 +32,7 @@ module SambaApi
     private
 
     def namespace
-      SambaApi.demodulize_class(self.class)
+      SambaApi.demodulize_class(self.class.ancestors[1])
     end
 
     def base_url
