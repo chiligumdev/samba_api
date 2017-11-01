@@ -3,7 +3,6 @@ require 'json'
 require 'byebug'
 require 'samba_api/version'
 require 'samba_api/init'
-require 'samba_api/projects'
 
 # lib/samba_api.rb
 module SambaApi

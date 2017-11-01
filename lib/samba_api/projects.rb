@@ -17,10 +17,10 @@ module SambaApi
     end
 
     def create_project(name, desc)
-      values = { "name": name.to_s, "description": desc.to_s }.to_json
+      values = { "name" => name.to_s, "description" => desc.to_s }.to_json
       endpoint_url = base_url + namespace + access_token
       response = HTTParty.post(endpoint_url, body: values, headers: header_request)
-      JSON.parse response, symbolize_names: true
+      JSON.parse response.body, symbolize_names: true
     end
 
     def delete_project(project_id)
@@ -31,6 +31,7 @@ module SambaApi
 
     private
 
+    #TODO Refactor the module name in namespace
     def namespace
       SambaApi.demodulize_class(self.class.ancestors[1])
     end

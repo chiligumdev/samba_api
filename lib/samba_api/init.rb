@@ -1,5 +1,6 @@
 require 'samba_api'
 require 'samba_api/projects'
+require 'samba_api/categories'
 
 # samba_api/ĺib/samba_api/init.rb
 module SambaApi
