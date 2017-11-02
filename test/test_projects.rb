@@ -16,11 +16,11 @@ class TestProjects < Minitest::Test
   end
 
   #TODO Continue tests from here!
-  # def test_all_projects_valid_client
-  #   setup_auth
-  #   @valid_client.all_projects
+  def test_all_projects_valid_client
+    setup_auth
+    @valid_client.all_projects
 
-  # end
+  end
 
   def test_all_projects_invalid_client
     setup_auth
