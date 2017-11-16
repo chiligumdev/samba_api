@@ -26,6 +26,10 @@ module SambaApi
       SambaApi::BASE_URL
     end
 
+    def category_base_url
+      SambaApi::CATEGORY_BASE_URL
+    end
+
     def access_token
       "?access_token=#{@access_token}"
     end

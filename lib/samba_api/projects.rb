@@ -11,7 +11,7 @@ module SambaApi
     end
 
     def project(project_id)
-      endpoint_url = base_url + 'projects' + '/' + project_id.to_s + access_token
+      endpoint_url = base_url + 'projects/' + project_id.to_s + access_token
       response = self.class.get(endpoint_url)
       JSON.parse(response.body)
     end
