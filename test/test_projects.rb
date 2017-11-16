@@ -11,13 +11,14 @@ require 'samba_api/projects'
 class TestProjects < Minitest::Test
 
   def setup_auth
-    @valid_client = SambaApi::Init.new('access_token' => 'fdkjshfkjdshfkdljshfjdklsfhkdjf')
+    @valid_client = SambaApi::Init.new('access_token' => ENV["SECRET_TOKEN"])
     @invalid_client = SambaApi::Init.new('access_token' => 'fdkjshfkjdshfkdljshfjdklsfhkdjf')
   end
 
   #TODO Continue tests from here!
   def test_all_projects_valid_client
     setup_auth
+    byebug
     @valid_client.all_projects
 
   end

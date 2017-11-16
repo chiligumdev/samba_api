@@ -35,6 +35,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rubocop"
   spec.add_development_dependency "byebug"
   spec.add_development_dependency "simplecov"
+  spec.add_development_dependency "figaro"
   spec.add_dependency "httparty"
   spec.add_dependency "json"
   spec.add_dependency "rest-client"

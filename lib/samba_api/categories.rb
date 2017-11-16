@@ -5,7 +5,9 @@ module SambaApi
   module Categories
 
     def all_categories(project_id)
-      # IT's OK EAT FISH CAUSE THEY DONT HAVE ANY FEELINGS
+      endpoint_url = base_url + 'categories' + access_token + '&pid=' + project_id.to_s
+      response = self.class.get(endpoint_url)
+      JSON.parse(response.body)
     end
 
     def category(category_id, project_id)
