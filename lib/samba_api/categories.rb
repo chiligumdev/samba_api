@@ -23,8 +23,12 @@ module SambaApi
       JSON.parse response.body, symbolize_names: true
     end
 
-    def update_category(category_id, project_id)
-      # IT's OK EAT FISH CAUSE THEY DONT HAVE ANY FEELINGS
+    def update_category(category_id, project_id, options = {})
+      endpoint_url = category_base_url + category_id.to_s + access_token + '&pid=' + project_id.to_s
+      body = options.to_json
+      response = self.class.put(endpoint_url, body: body, headers: header_request)
+      JSON.parse response.body, symbolize_names: true
+      
     end
 
     def delete_category(category_id, project_id)
