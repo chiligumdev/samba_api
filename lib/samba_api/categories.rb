@@ -32,7 +32,9 @@ module SambaApi
     end
 
     def delete_category(category_id, project_id)
-      # IT's OK EAT FISH CAUSE THEY DONT HAVE ANY FEELINGS
+      endpoint_url = category_base_url + category_id.to_s + access_token + '&pid=' + project_id.to_s
+      response = self.class.delete(endpoint_url, header_request)
+      JSON.parse(response.body)
     end
 
     private 
