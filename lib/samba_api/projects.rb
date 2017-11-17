@@ -28,7 +28,5 @@ module SambaApi
       response = self.class.delete(endpoint_url, header_request)
       response.code
     end
-
-    private 
   end
 end
