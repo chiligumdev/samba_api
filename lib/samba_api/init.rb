@@ -32,6 +32,10 @@ module SambaApi
       SambaApi::CATEGORY_BASE_URL
     end
 
+    def media_base_url
+      SambaApi::MEDIA_BASE_URL
+    end
+
     def access_token
       "?access_token=#{@access_token}"
     end
