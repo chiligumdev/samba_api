@@ -31,6 +31,12 @@ module SambaApi
       return stdout.read
     end
 
+    def delete_media(media_id, project_id)
+      endpoint_url = media_base_url + media_id.to_s + access_token + '&pid=' + project_id.to_s
+      response = self.class.delete(endpoint_url, header_request)
+      JSON.parse(response.body)
+    end
+
     def active_media(media_id, body)
       #TODO better way to get project
       project_id = all_projects.first['id']
