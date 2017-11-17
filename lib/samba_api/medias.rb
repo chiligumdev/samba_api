@@ -19,8 +19,16 @@ module SambaApi
     end
 
     def upload_media
-      prepare_upload
-      byebug
+      upload_url = prepare_upload['uploadUrl']
+      stdin, stdout, stderr, wait_thr = *Open3.popen3(
+        'curl', '--silent', '--show-error',
+         '-X', 'POST', upload_url,
+         '--header', 'Content-Type: multipart/form-data',
+         '-F', "file=@#{video_path}"
+      )
+      wait_thr.join
+      return false unless stderr.eof?
+      return stdout.read
     end
 
     private
