@@ -1,6 +1,7 @@
 require 'samba_api'
 require 'samba_api/projects'
 require 'samba_api/categories'
+require 'samba_api/medias'
 
 # samba_api/ĺib/samba_api/init.rb
 module SambaApi
@@ -9,6 +10,7 @@ module SambaApi
     include HTTParty
     include SambaApi::Projects
     include SambaApi::Categories
+    include SambaApi::Medias
 
     def initialize(options={})
       options.each do |key, value|
