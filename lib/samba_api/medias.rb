@@ -39,19 +39,18 @@ module SambaApi
 
     def active_media(media_id, body)
       #TODO better way to get project
-      project_id = all_projects.first['id']
+      project_id = all_projects.last['id']
       endpoint_url = media_base_url + media_id.to_s + access_token + '&pid=' + project_id.to_s
       response = self.class.put(endpoint_url, body: body, headers: header_request)
       response = JSON.parse(response.body)
     end
-#/home/lean/Downloads/a26328a25bab97a8e802a3c3cde23d81.mp4
+
     private
-#'{ "publishDate": ' + Time.now.to_i.to_s + ', "categoryId": "6" }'
-    # Before to send media, its necessary to create a url to pass the file, this method do this
+
     def prepare_upload
       body = '{ "qualifier": "VIDEO" }'
       #TODO better way to get project
-      project_id = all_projects.first['id']
+      project_id = all_projects.last['id']
       endpoint_url = media_base_url + access_token +  '&pid=' + project_id.to_s
       response = self.class.post(endpoint_url, body: body, headers: header_request)
       response = JSON.parse(response.body)
