@@ -20,6 +20,7 @@ module SambaApi
 
     def upload_media(media_path)
       upload_url = prepare_upload['uploadUrl']
+      media_id = prepare_upload['id']
       stdin, stdout, stderr, wait_thr = *Open3.popen3(
         'curl', '--silent', '--show-error',
          '-X', 'POST', upload_url,
@@ -28,7 +29,7 @@ module SambaApi
       )
       wait_thr.join
       return false unless stderr.eof?
-      return stdout.read
+      return stdout.read, media_id: media_id
     end
 
     def delete_media(media_id, project_id)
