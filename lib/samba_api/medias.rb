@@ -18,18 +18,20 @@ module SambaApi
       JSON.parse(response.body)
     end
 
-    def upload_media(media_path)
-      upload_url = prepare_upload['uploadUrl']
-      media_id = prepare_upload['id']
+    def upload_media(media_path, project_id)
+      upload_url = prepare_upload(project_id)
+      
       stdin, stdout, stderr, wait_thr = *Open3.popen3(
         'curl', '--silent', '--show-error',
-         '-X', 'POST', upload_url,
+         '-X', 'POST', upload_url['uploadUrl'],
          '--header', 'Content-Type: multipart/form-data',
          '-F', "file=@#{media_path}"
       )
       wait_thr.join
       return false unless stderr.eof?
-      return stdout.read, media_id: media_id
+      http_response = JSON.parse(stdout.read)
+
+      return http_response.merge(media_id: upload_url['id'])
     end
 
     def delete_media(media_id, project_id)
@@ -48,10 +50,9 @@ module SambaApi
 
     private
 
-    def prepare_upload
+    def prepare_upload(project_id)
       body = '{ "qualifier": "VIDEO" }'
       #TODO better way to get project
-      project_id = all_projects.last['id']
       endpoint_url = media_base_url + access_token +  '&pid=' + project_id.to_s
       response = self.class.post(endpoint_url, body: body, headers: header_request)
       response = JSON.parse(response.body)
