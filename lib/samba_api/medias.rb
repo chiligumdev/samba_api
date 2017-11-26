@@ -31,7 +31,7 @@ module SambaApi
       return false unless stderr.eof?
       http_response = JSON.parse(stdout.read)
 
-      return http_response.merge(media_id: upload_url['id'])
+      return http_response.merge(media_id: upload_url['id'], upload_response: upload_url)
     end
 
     def delete_media(media_id, project_id)
@@ -40,15 +40,25 @@ module SambaApi
       JSON.parse(response.body)
     end
 
-    def active_media(media_id, body)
+    def active_media(media_id, project_id, body)
       #TODO better way to get project
-      project_id = all_projects.last['id']
       endpoint_url = media_base_url + media_id.to_s + access_token + '&pid=' + project_id.to_s
       response = self.class.put(endpoint_url, body: body, headers: header_request)
       response = JSON.parse(response.body)
     end
 
+    def upload_thumbnail
+      #TODO method to upload thumbs
+    end
+
     private
+
+    def prepare_thumbnail(media_id)
+      values = '{ "qualifier": "THUMBNAIL" }'
+      endpoint_url = media_base_url + media_id.to_s + access_token + '&pid=' + project_id.to_s
+      response  = self.class.post(endpoint_url, header_request)
+      response = JSON.parse(response.body)
+    end
 
     def prepare_upload(project_id)
       body = '{ "qualifier": "VIDEO" }'

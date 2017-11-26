@@ -12,3 +12,4 @@ module SambaApi
     end
   end
 end
+
