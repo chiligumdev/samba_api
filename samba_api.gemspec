@@ -32,11 +32,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.13"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "minitest"
-  spec.add_development_dependency "rubocop"
   spec.add_development_dependency "byebug"
-  spec.add_development_dependency "simplecov"
-  spec.add_development_dependency "figaro"
-  spec.add_dependency "httparty"
   spec.add_dependency "json"
-  spec.add_dependency "rest-client"
 end
