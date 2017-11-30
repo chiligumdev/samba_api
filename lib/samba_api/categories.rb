@@ -37,7 +37,7 @@ module SambaApi
       JSON.parse(response.body)
     end
 
-    private 
+    private
 
     #TODO, REFACTOR THE MODULE NAME IN NAMESPACE
     def namespace
