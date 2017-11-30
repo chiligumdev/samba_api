@@ -23,7 +23,7 @@ module SambaApi
       JSON.parse response.body, symbolize_names: true
     end
 
-    #TODO incorrect formating body to send request
+    #TODO, INCORRECT FORMATING BODY TO SEND REQUEST
     def update_category(category_id, project_id, options = {})
       # endpoint_url = category_base_url + category_id.to_s + access_token + '&pid=' + project_id.to_s
       # body = { "name" => options[:name], "parent" => options[:parent], "genre" => options[:genre], "connectedAccounts" => options[:connectedAccounts], "children" => options[:children]}.to_json
@@ -39,7 +39,7 @@ module SambaApi
 
     private 
 
-    #TODO Refactor the module name in namespace
+    #TODO, REFACTOR THE MODULE NAME IN NAMESPACE
     def namespace
       SambaApi.demodulize_class(self.class.ancestors[1])
     end
