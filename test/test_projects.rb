@@ -25,6 +25,12 @@ class TestProjects < Minitest::Test
     diff(response.size, 0)
   end
 
+  def test_all_projects_invalid_client
+    setup_auth
+    response = @invalid_client.all_projects
+    assert_equal('invalid_token' , response['error'])
+  end
+
   def test_project_with_valid_client
     setup_auth
     project = @valid_client.all_projects.first
@@ -40,10 +46,18 @@ class TestProjects < Minitest::Test
     assert_equal(project[1], "invalid_token")
   end
 
-  def test_all_projects_invalid_client
+  def test_create_new_project_with_valid_client
     setup_auth
-    response = @invalid_client.all_projects
-    assert_equal('invalid_token' , response['error'])
+    name_project = 'dkjhfkjfhksjfhsjkl'
+    desc_project = 'xcjhfdskljhfkj'
+    response = @valid_client.create_project(name_project, desc_project)
+    refute_nil(response)
+    byebug
+    assert_equal(response["name"], name_project)
+    assert_equal(response[:description], desc_project)
+  end
+
+  def test_create_new_project_with_invalid_client
   end
   
 end
