@@ -1,6 +1,7 @@
 # test/test_projects.rb
 require 'simplecov'
 SimpleCov.start
+require 'faker'
 require 'yaml'
 require 'minitest/autorun'
 require 'minitest/unit'
@@ -48,12 +49,11 @@ class TestProjects < Minitest::Test
 
   def test_create_new_project_with_valid_client
     setup_auth
-    name_project = 'dkjhfkjfhksjfhsjkl'
-    desc_project = 'xcjhfdskljhfkj'
+    name_project = Faker::Name.name 
+    desc_project = Faker::Movie.quote
     response = @valid_client.create_project(name_project, desc_project)
     refute_nil(response)
-    byebug
-    assert_equal(response["name"], name_project)
+    assert_equal(response[:name], name_project)
     assert_equal(response[:description], desc_project)
   end
 
