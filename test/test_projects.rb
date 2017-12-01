@@ -1,14 +1,5 @@
 # test/test_projects.rb
-require 'simplecov'
-SimpleCov.start
-require 'faker'
-require 'yaml'
-require 'minitest/autorun'
-require 'minitest/unit'
-require 'minitest/pride'
-require 'httparty'
-require 'samba_api/init'
-require 'samba_api/projects'
+require 'test_helper'
 
 class TestProjects < Minitest::Test
 
@@ -18,7 +9,6 @@ class TestProjects < Minitest::Test
     @invalid_client = SambaApi::Init.new('access_token' => 'fdkjshfkjdshfkdljshfjdklsfhkdjf')
   end
 
-  #TODO Continue tests from here!
   def test_all_projects_valid_client
     setup_auth
     response = @valid_client.all_projects
