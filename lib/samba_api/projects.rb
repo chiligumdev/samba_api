@@ -26,7 +26,9 @@ module SambaApi
     def delete_project(project_id)
       endpoint_url = base_url + 'projects' + '/' + project_id.to_s + access_token
       response = self.class.delete(endpoint_url, header_request)
-      response.code
+      status_code = { status_code: response.code }
+      response = JSON.parse(response.body)
+      response = response.merge(status_code)
     end
   end
 end

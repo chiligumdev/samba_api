@@ -65,4 +65,12 @@ class TestProjects < Minitest::Test
     refute_nil(response)
     assert_equal(response[:error], "invalid_token")
   end
+
+  def test_delete_project_with_valid_client
+    setup_auth
+    project = @valid_client.all_projects.first
+    response = @valid_client.delete_project(project["id"])
+    assert_equal(response[:status_code], 200)
+    refute_nil(response)
+  end
 end
