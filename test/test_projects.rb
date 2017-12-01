@@ -34,6 +34,12 @@ class TestProjects < Minitest::Test
     assert_equal(response["name"], project_name)
   end
 
+  def test_project_with_invalid_client
+    setup_auth
+    project = @invalid_client.all_projects.first
+    assert_equal(project[1], "invalid_token")
+  end
+
   def test_all_projects_invalid_client
     setup_auth
     response = @invalid_client.all_projects
