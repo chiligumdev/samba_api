@@ -20,8 +20,18 @@ class TestProjects < Minitest::Test
   #TODO Continue tests from here!
   def test_all_projects_valid_client
     setup_auth
-    byebug
-    @valid_client.all_projects
+    response = @valid_client.all_projects
+    refute_nil(response)
+    diff(response.size, 0)
+  end
+
+  def test_project_with_valid_client
+    setup_auth
+    project = @valid_client.all_projects.first
+    project_name = project['name']
+    response = @valid_client.project(project["id"])
+    refute_nil(response)
+    assert_equal(response["name"], project_name)
   end
 
   def test_all_projects_invalid_client
