@@ -58,7 +58,11 @@ class TestProjects < Minitest::Test
   end
 
   def test_create_new_project_with_invalid_client
+    setup_auth
+    name_project = Faker::Name.name 
+    desc_project = Faker::Movie.quote
+    response = @invalid_client.create_project(name_project, desc_project)
+    refute_nil(response)
+    assert_equal(response[:error], "invalid_token")
   end
-  
 end
-
