@@ -37,11 +37,5 @@ module SambaApi
       JSON.parse(response.body)
     end
 
-    private
-
-    # TODO, REFACTOR THE MODULE NAME IN NAMESPACE
-    def namespace
-      SambaApi.demodulize_class(self.class.ancestors[1])
-    end
   end
 end
