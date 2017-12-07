@@ -28,6 +28,11 @@ class TestCategories < Minitest::Test
     assert_equal(response["name"], category["name"])
   end
 
-  def test_create_category_with_valid_client
+  def test_create_category_with_invalid_key_option
+    setup_auth
+    project = @valid_client.all_projects.sample
+    refute_nil(project)
+    response = @valid_client.create_category(project["id"], ham: Faker::Name.name )
+    assert_equal(response[:exception][:message],"Field errors: name : rejected value [null]")
   end
 end
