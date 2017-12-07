@@ -19,10 +19,6 @@ module SambaApi
       end
     end
     private 
-    #TODO Refactor the module name in namespace
-    def namespace
-      SambaApi.demodulize_class(self.class.ancestors[1])
-    end
 
     def base_url
       SambaApi::BASE_URL
