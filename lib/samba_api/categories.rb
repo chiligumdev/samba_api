@@ -23,12 +23,11 @@ module SambaApi
       JSON.parse response.body, symbolize_names: true
     end
 
-    # TODO, INCORRECT FORMATING BODY TO SEND REQUEST
     def update_category(category_id, project_id, options = {})
-      # endpoint_url = category_base_url + category_id.to_s + access_token + '&pid=' + project_id.to_s
-      # body = { "name" => options[:name], "parent" => options[:parent], "genre" => options[:genre], "connectedAccounts" => options[:connectedAccounts], "children" => options[:children]}.to_json
-      # response = self.class.put(endpoint_url, body: body.to_json, headers: header_request)
-      # JSON.parse response.body, symbolize_names: true
+      endpoint_url = category_base_url + category_id.to_s + access_token + '&pid=' + project_id.to_s
+      body = { 'name' => options[:name], 'parent' => options[:parent], 'genre' => options[:genre], 'connectedAccounts' => options[:connectedAccounts], 'children' => options[:children]}
+      response = self.class.put(endpoint_url, body: body, headers: header_request)
+      JSON.parse response.body, symbolize_names: true
     end
 
     def delete_category(category_id, project_id)
