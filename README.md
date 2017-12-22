@@ -41,9 +41,21 @@ Or install it yourself as:
 
 ```ruby
 
-  client.all_projects
+  projects = client.all_projects
 
 ```
+  
+  This method will return an array of hashes containing all the projects belonging to the previously installed client.
+
+#### Search for a specific project
+
+```ruby
+
+  some_project = client.project(project_id)
+
+```
+  This method returns the project informed according to the id if the project exists
+
 
 
 
