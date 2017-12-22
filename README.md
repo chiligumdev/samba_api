@@ -66,6 +66,13 @@ Or install it yourself as:
 
 ```
 
+#### Deleting a project
+  
+  To delete a project, just call the delete_project method, passing the id of the project you want to delete as the required parameter.
+
+```ruby
+  client.delete_project(project_id)
+```
 
 ## Development
 
