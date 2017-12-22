@@ -1,8 +1,6 @@
 # SambaApi
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/samba_api`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Simple lib to manipulate the sambatech API.
 
 ## Installation
 
@@ -22,7 +20,32 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+ To start using gem is very simple. Instantiate the class by passing its access_token created in the sambatech panel. Let's take a look at the example:
+
+```ruby
+ client = SambaApi::Init.new(access_token: 'my_valid_token_created_in_sambatech_dashboard')
+
+```
+
+ After this step, we can start using all the features offered by the sambaTech API
+
+
+### Projects
+
+ To manipulate the project endpoint, we have four methods to support us.
+
+
+#### List all existing projects
+
+  After instantiating your client with a valid access_token, call the following method:
+
+```ruby
+
+  client.all_projects
+
+```
+
+
 
 ## Development
 
