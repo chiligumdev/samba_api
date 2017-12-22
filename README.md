@@ -56,7 +56,15 @@ Or install it yourself as:
 ```
   This method returns the project informed according to the id if the project exists
 
+#### Creating a project
 
+  To create a project, call the create_project method by passing the project name and its description as mandatory parameters. Let's take a look at the example:
+
+```ruby
+  
+  new_project = client.create_project(name_of_project, description_of_project)
+
+```
 
 
 ## Development
