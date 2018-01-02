@@ -102,7 +102,43 @@ Or install it yourself as:
 
  This method returns the media informed according to the media_id and the project_id if the project and media exists.
 
+#### Creating a Media
+
+   To create a media, call the upload_media method by passing the media_path and project_id as mandatory parameters. Let's take a look at the example:
+
+```ruby
+
+  client.upload_media('/some/path/to/my/media.mp4', project_id)
+
+```
+
+#### Deleting a media
  
+  To delete medias just call delete_media method passing the id of the project where the media belong and the id of the media, this parameters are mandatories
+
+```ruby
+
+  client.delete_media(media_id, project_id)
+
+
+```
+
+#### Activing media
+
+
+ To activate a media, it is necessary to pass the id of the media to be activated the id of the project that the media belongs to and a body in json format with the information to be updated.
+
+ Possible values in body: { id , title , status , qualifier , description , shortDescription , categoryName , categoryId , postdate , lastModified , publishDate , published , highlighted , restricted , secondUrl , numberOfViews , numberOfComments , numberOfRatings , childStatus , tags , files , thumbs , genders , captions , externalPublishings }
+
+```ruby
+
+ body = { "publishDate": DateTime.now, "categoryId": "12345" }
+
+ client.active_media(media_id, project_id, body)
+
+```
+
+ If all information in the body is correct, the media must be updated
 
 ## Development
 
