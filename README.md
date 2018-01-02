@@ -140,6 +140,67 @@ Or install it yourself as:
 
  If all information in the body is correct, the media must be updated
 
+## Categories
+ 
+ To manipulate categories endpoint, we have the following methods to support us.
+
+
+#### Listing all categories from a project
+ 
+ To list all categories created in a project, simply call the following method by passing the project_id parameter. The project id is required. 
+
+```ruby
+
+  client.all_categories(project_id)
+
+```
+
+ This method will return an array of hashes containing all the categories belonging to the project informed in the parameter passed.
+
+#### Search for a specific Category
+
+```ruby
+
+   client.category(category_id, project_id)
+
+```
+
+  This method returns the category informed according to the category_id and the project_id if the project and category exists.
+
+#### Creating a Category
+
+ To create a category, call the create_category method by passing the project_id  and pass a hash with the options listed in API as mandatory parameters. Let's take a look at the example:
+
+
+
+```ruby
+
+body = '{
+  "name": "Automobilismo",
+  "parent": 19240,
+  "genre": null,
+  "connectedAccounts": [],
+  "children": []
+}'
+
+  client.create_category(project_id, body)
+
+
+```
+
+
+#### Deleting a Category
+
+To delete categories just call delete_category method passing the id of the project where the category belongs and the id of the category, this parameters are mandatories
+
+
+```ruby
+
+  client.delete_media(media_id, project_id)
+
+
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
