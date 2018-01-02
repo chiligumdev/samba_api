@@ -30,7 +30,7 @@ Or install it yourself as:
  After this step, we can start using all the features offered by the sambaTech API
 
 
-### Projects
+## Projects
 
  To manipulate the project endpoint, we have four methods to support us.
 
@@ -71,8 +71,38 @@ Or install it yourself as:
   To delete a project, just call the delete_project method, passing the id of the project you want to delete as the required parameter.
 
 ```ruby
+
   client.delete_project(project_id)
+  
 ```
+
+## Medias
+
+ To manipulate medias endpoint, we have the following methods to support us.
+
+### Listing all medias from a project
+
+ To list all the videos created in a project, simply call the following method by passing the project_id parameter. The project id is required.
+
+```ruby
+
+  client.all_medias(project_id)
+
+```
+
+ This method will return an array of hashes containing all the videos belonging to the project informed in the parameter passed.
+
+#### Search for a specific Media
+
+```ruby
+  
+  client.get_media(media_id, project_id)
+  
+```
+
+ This method returns the media informed according to the media_id and the project_id if the project and media exists.
+
+ 
 
 ## Development
 
