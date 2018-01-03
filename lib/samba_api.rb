@@ -7,9 +7,9 @@ require 'samba_api/init'
 # lib/samba_api.rb
 module SambaApi
   class << self
-    def demodulize_class class_name
+    def demodulize_class(class_name)
+      return nil unless class_name
       class_name.to_s.split('::').last.downcase
     end
   end
 end
-
