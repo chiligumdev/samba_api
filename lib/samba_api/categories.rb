@@ -25,7 +25,7 @@ module SambaApi
 
     def update_category(category_id, project_id, options = {})
       endpoint_url = category_base_url + category_id.to_s + access_token + '&pid=' + project_id.to_s
-      body = { 'name' => options[:name], 'parent' => options[:parent], 'genre' => options[:genre], 'connectedAccounts' => options[:connectedAccounts], 'children' => options[:children]}.to_json
+      body = { 'name' => options[:name], 'id' => options[:id], 'parent' => options[:parent], 'genre' => options[:genre], 'connectedAccounts' => options[:connectedAccounts], 'children' => options[:children], hidden: options[:hidden]}.to_json
       response = self.class.put(endpoint_url, body: body, headers: header_request)
       JSON.parse response.body, symbolize_names: true
     end

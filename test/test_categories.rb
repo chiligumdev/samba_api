@@ -48,9 +48,21 @@ class TestCategories < Minitest::Test
     setup_auth
     project = @valid_client.all_projects.sample
     refute_nil(project)
-    category = @valid_client.create_category(project["id"], name: Faker::Name.name )
+    category = @valid_client.create_category(project["id"], name: Faker::Name.name)
     refute_nil(category)
     response = @valid_client.delete_category(category[:id], category[:project])
     assert_equal(response["id"], category[:id])
+  end
+
+  def test_update_category_with_valid_client
+    setup_auth
+    project = @valid_client.all_projects.sample
+    refute_nil(project)
+    category = @valid_client.create_category(project["id"], name: Faker::Name.name)
+    refute_nil(category)
+    name_update = 'Leandro'
+    body = { name: name_update, id: category[:id], parent: category[:parent], hidden: category[:hidden], connectedAccounts: category[:connectedAccounts], children: category[:children] }
+    response = @valid_client.update_category(category[:id], project["id"], body)
+    assert_equal(response[:name], name_update)
   end
 end
