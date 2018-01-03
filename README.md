@@ -72,7 +72,7 @@ Or install it yourself as:
 
 ```ruby
 
-  client.delete_project(project_id)
+  response_project = client.delete_project(project_id)
   
 ```
 
@@ -86,7 +86,7 @@ Or install it yourself as:
 
 ```ruby
 
-  client.all_medias(project_id)
+  medias = client.all_medias(project_id)
 
 ```
 
@@ -96,7 +96,7 @@ Or install it yourself as:
 
 ```ruby
   
-  client.get_media(media_id, project_id)
+  some_media = client.get_media(media_id, project_id)
   
 ```
 
@@ -108,7 +108,7 @@ Or install it yourself as:
 
 ```ruby
 
-  client.upload_media('/some/path/to/my/media.mp4', project_id)
+   new_media = client.upload_media('/some/path/to/my/media.mp4', project_id)
 
 ```
 
@@ -118,7 +118,7 @@ Or install it yourself as:
 
 ```ruby
 
-  client.delete_media(media_id, project_id)
+  response_media = client.delete_media(media_id, project_id)
 
 
 ```
@@ -134,7 +134,7 @@ Or install it yourself as:
 
  body = { "publishDate": DateTime.now, "categoryId": "12345" }
 
- client.active_media(media_id, project_id, body)
+ response_media = client.active_media(media_id, project_id, body)
 
 ```
 
@@ -151,7 +151,7 @@ Or install it yourself as:
 
 ```ruby
 
-  client.all_categories(project_id)
+  categories = client.all_categories(project_id)
 
 ```
 
@@ -161,7 +161,7 @@ Or install it yourself as:
 
 ```ruby
 
-   client.category(category_id, project_id)
+   some_category = client.category(category_id, project_id)
 
 ```
 
@@ -183,7 +183,7 @@ body = '{
   "children": []
 }'
 
-  client.create_category(project_id, body)
+  new_category = client.create_category(project_id, body)
 
 
 ```
@@ -196,7 +196,7 @@ To delete categories just call delete_category method passing the id of the proj
 
 ```ruby
 
-  client.delete_media(media_id, project_id)
+  response_category = client.delete_category(category_id, project_id)
 
 
 ```
@@ -210,4 +210,3 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/chiligumdev/samba_api.
-
