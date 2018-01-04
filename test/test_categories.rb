@@ -60,8 +60,8 @@ class TestCategories < Minitest::Test
     refute_nil(project)
     category = @valid_client.create_category(project["id"], name: Faker::Name.name)
     refute_nil(category)
-    name_update = 'Leandro'
-    body = { name: name_update, id: category[:id], parent: category[:parent], hidden: category[:hidden], connectedAccounts: category[:connectedAccounts], children: category[:children] }
+    name_update = 'Leandro' + SecureRandom.hex(2)
+    body = { name: name_update.to_s, id: category[:id], parent: category[:parent], hidden: category[:hidden], connectedAccounts: category[:connectedAccounts], children: category[:children] }
     response = @valid_client.update_category(category[:id], project["id"], body)
     assert_equal(response[:name], name_update)
   end

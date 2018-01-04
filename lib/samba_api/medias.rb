@@ -47,14 +47,6 @@ module SambaApi
       response = JSON.parse(response.body)
     end
 
-    def upload_thumbnail(samba_id)
-      video = Video.find_by(samba_hash: samba_id)
-      response = JSON.parse(prepare_thumbnail(samba_id))
-      if video
-        #IMPLEMENT NEW THUMB
-      end
-    end
-
     private
 
     def prepare_thumbnail(media_id)
