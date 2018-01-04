@@ -19,15 +19,15 @@ class TestMedias < Minitest::Test
     end
   end
 
-  # def test_upload_media_with_valid_client
-  #   setup_auth
-  #   video_id_from_url = @media_path.split('/').last
-  #   project = @valid_client.project(8046)
-  #   refute_nil(project)
-  #   setup_tmp_local_media
-  #   response = @valid_client.upload_media("/tmp/#{video_id_from_url}", project["id"])
-  #   assert_equal(response["type"], "UPLOAD")
-  # end
+  def test_upload_media_with_valid_client
+    setup_auth
+    video_id_from_url = @media_path.split('/').last
+    project = @valid_client.project(8046)
+    refute_nil(project)
+    setup_tmp_local_media
+    response = @valid_client.upload_media("/tmp/#{video_id_from_url}", project["id"])
+    assert_equal(response["type"], "UPLOAD")
+  end
   
   def test_all_medias_with_valid_client_return_array
     setup_auth
@@ -68,13 +68,13 @@ class TestMedias < Minitest::Test
     refute_nil(media["publishDate"])
   end
 
-  # def test_delete_media_with_valid_client
-  #   setup_auth
-  #   project = @valid_client.project(8046)
-  #   refute_nil(project)
-  #   media = @valid_client.all_medias(project["id"]).sample
-  #   refute_nil(media)
-  #   response = @valid_client.delete_media(media["id"], project["id"])
-  # end
+  def test_delete_media_with_valid_client
+    setup_auth
+    project = @valid_client.project(8046)
+    refute_nil(project)
+    media = @valid_client.all_medias(project["id"]).sample
+    refute_nil(media)
+    response = @valid_client.delete_media(media["id"], project["id"])
+  end
 
 end
