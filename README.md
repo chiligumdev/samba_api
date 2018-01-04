@@ -1,3 +1,5 @@
+[Coverage Status]: https://coveralls.io/r/LeandroFigueredo/chiligumdev/samba_api
+
 # SambaApi
 
 Simple lib to manipulate the sambatech API.

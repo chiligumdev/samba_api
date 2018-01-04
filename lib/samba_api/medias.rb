@@ -49,13 +49,6 @@ module SambaApi
 
     private
 
-    def prepare_thumbnail(media_id)
-      values = '{ "qualifier": "THUMBNAIL" }'
-      endpoint_url = media_base_url + media_id.to_s + access_token + '&pid=' + project_id.to_s
-      response  = self.class.post(endpoint_url, header_request)
-      response = JSON.parse(response.body)
-    end
-
     def prepare_upload(project_id)
       body = '{ "qualifier": "VIDEO" }'
       #TODO better way to get project
