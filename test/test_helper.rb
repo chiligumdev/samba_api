@@ -1,10 +1,7 @@
 # test/test_helper.rb
 require 'simplecov'
 require 'coveralls'
-SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
-  SimpleCov::Formatter::HTMLFormatter,
-  Coveralls::SimpleCov::Formatter
-]
+Coveralls.wear!
 SimpleCov.start
 require 'minitest/autorun'
 require 'minitest/unit'

@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/github/chiligumdev/samba_api/badge.svg?branch=master)](https://coveralls.io/github/chiligumdev/samba_api?branch=master)
+
 # SambaApi
 
 Simple lib to manipulate the sambatech API.
