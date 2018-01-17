@@ -8,6 +8,7 @@
 /spec/reports/
 /tmp/
 /.byebug_history
+/.coveralls.yml
 */.gem
 # Ignore application configuration
 /config/application.yml

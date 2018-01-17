@@ -1,5 +1,7 @@
 require 'rake/testtask'
 require 'bundler/gem_tasks'
+require 'coveralls/rake/task'
+
 task default: :spec
 
 task :console do

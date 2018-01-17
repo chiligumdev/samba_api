@@ -1,7 +1,8 @@
 # test/test_helper.rb
 require 'simplecov'
-SimpleCov.start
 require 'coveralls'
+SimpleCov.formatter = Coveralls::SimpleCov::Formatter
+SimpleCov.start
 Coveralls.wear!
 require 'minitest/autorun'
 require 'minitest/unit'
