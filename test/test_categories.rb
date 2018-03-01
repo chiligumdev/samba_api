@@ -2,8 +2,8 @@
 require 'test_helper'
 
 class TestCategories < Minitest::Test
-
   def setup_auth
+    SimpleCov.command_name 'test:units'
     data = YAML.load_file('config/application.yml')
     @valid_client = SambaApi::Init.new('access_token' => data['SECRET_TOKEN'])
     @invalid_client = SambaApi::Init.new('access_token' => 'fdkjshfkjdshfkdljshfjdklsfhkdjf')
