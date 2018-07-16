@@ -41,7 +41,6 @@ module SambaApi
     end
 
     def active_media(media_id, project_id, body)
-      #TODO better way to get project
       endpoint_url = media_base_url + media_id.to_s + access_token + '&pid=' + project_id.to_s
       response = self.class.put(endpoint_url, body: body, headers: header_request)
       response = JSON.parse(response.body)
